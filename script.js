@@ -7,8 +7,6 @@ const trunc = (text, maxLenght) =>
 
 const renderCards = (products) => {
   products.forEach((product) => {
-    const imgs = product.images;
-    console.log(imgs[0]);
     const cardHTML = ` 
             <div class="card" style="width: 18rem; height: 330px">
                 <img src="header.png" class="card-img-top" alt="${
@@ -32,11 +30,11 @@ const renderCards = (products) => {
   });
   deleteBtns = document.querySelectorAll("#deleteBtn");
   deleteBtns.forEach((deleteBtn, key) => {
-    deleteBtn.addEventListener("click", () => {
+    deleteBtn.addEventListener("click", (e) => {
+        e.preventDefault();
         deleteProduct(deleteBtnsNew[key]);
       });
   });
-  console.log(deleteBtns,deleteBtnsNew);
 };
 
 fetch("https://api.escuelajs.co/api/v1/products?offset=80&limit=10")
